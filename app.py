@@ -1,5 +1,3 @@
-%%writefile ecobot_app.py
-
 import streamlit as st
 import requests
 from datetime import datetime
