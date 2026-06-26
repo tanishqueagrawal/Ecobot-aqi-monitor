@@ -2,15 +2,15 @@ import streamlit as st
 import requests
 from datetime import datetime
 import os
-from google import genai
+from groq import Groq
 
 st.title("🌿 EcoBot — Air Quality Monitor")
-st.write("Real-time AQI checker — Powered by WAQI API + Gemini AI")
+st.write("Real-time AQI checker — Powered by WAQI API + AI")
 
 waqi_key = os.getenv("WAQI_API_KEY", "d222ab8a9905d4afba60a409ccaa662b21f8cdb4")
-gemini_key = os.getenv("GEMINI_API_KEY", "AQ.Ab8RN6Iat_-5_lbaj0p2Lx0rDgUTAgJMuihyGUiSqAOtXDebQA")
+groq_key = os.getenv("GROQ_API_KEY", "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")
 
-client = genai.Client(api_key=gemini_key)
+client = Groq(api_key=groq_key)
 
 city = st.selectbox("City chuno:", ["jaipur", "delhi", "agra", "mumbai"])
 
@@ -48,10 +48,10 @@ if user_question:
     with st.spinner("EcoBot soch raha hai..."):
         try:
             prompt = f"Current AQI {aqi} hai {city} mein. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
-            reply = client.models.generate_content(
-             model="gemini-2.0-flash-lite",
-                contents=prompt
+            reply = client.chat.completions.create(
+                model="llama3-8b-8192",
+                messages=[{"role": "user", "content": prompt}]
             )
-            st.success(f"🤖 EcoBot: {reply.text}")
+            st.success(f"🤖 EcoBot: {reply.choices[0].message.content}")
         except Exception as e:
             st.error(f"Debug: {str(e)}")
