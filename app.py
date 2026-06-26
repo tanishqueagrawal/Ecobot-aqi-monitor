@@ -26,10 +26,9 @@ last_updated = data['data']['time']['s']
 
 # Temperature aur Humidity
 iaqi = data['data'].get('iaqi', {})
-temp = iaqi.get('t', {}).get('v', 'N/A')
-humidity = iaqi.get('h', {}).get('v', 'N/A')
-wind = iaqi.get('w', {}).get('v', 'N/A')
-
+temp = round(iaqi.get('t', {}).get('v', 0), 1)
+humidity = round(iaqi.get('h', {}).get('v', 0), 1)
+wind = round(iaqi.get('w', {}).get('v', 0), 2)
 # Top metrics row
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("🌫️ AQI", aqi)
