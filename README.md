@@ -1,22 +1,26 @@
-# 🌿 EcoBot — Air Quality Monitor
+# 🌿 EcoBot — AI-Powered Air Quality Monitor
 
-An AI-powered real-time Air Quality Index (AQI) monitoring web app for Indian cities.
+A live AI-powered real-time Air Quality Index (AQI) monitoring web app for Indian cities.
 
 ## 🚀 Live Demo
-Built with Python, Streamlit, and WAQI API.
 👉 [Click here to open EcoBot](https://ecobot-aqi-monitor-1.streamlit.app)
 
-## 🔧 Features
+## 🤖 Features
 - Real-time AQI data for Indian cities (Jaipur, Delhi, Agra, Mumbai)
 - Smart health recommendations based on AQI levels
+- AI Chatbot — ask anything about air quality in Hindi
 - Data freshness indicator — warns if sensor data is outdated
 - City selector dropdown
 
 ## 🛠️ Tech Stack
-- Python
-- Streamlit
-- WAQI API (World Air Quality Index)
-- Google Colab (development environment)
+| Tool | Use |
+|------|-----|
+| Python | Core language |
+| Streamlit | Web app frontend |
+| WAQI API | Real-time AQI data |
+| Groq API (Llama 3.3) | AI chatbot responses |
+| Streamlit Cloud | Deployment |
+| GitHub | Version control |
 
 ## 📊 AQI Scale
 | AQI Range | Status |
@@ -28,9 +32,10 @@ Built with Python, Streamlit, and WAQI API.
 
 ## ⚙️ Setup
 1. Clone this repo
-2. Install dependencies: `pip install streamlit requests`
-3. Set your WAQI API key
+2. Install: `pip install streamlit requests groq`
+3. Set your API keys (WAQI + Groq)
 4. Run: `streamlit run app.py`
 
 ## 👨‍💻 Developer
-Tanishque Agrawal — B.Tech AI & Data Science, Arya College, Jaipur
+Tanishque Agrawal
+B.Tech AI & Data Science — Arya College, Jaipur
