@@ -8,7 +8,7 @@ st.title("🌿 EcoBot — Air Quality Monitor")
 st.write("Real-time AQI checker — Powered by WAQI API + Gemini AI")
 
 waqi_key = os.getenv("WAQI_API_KEY", "d222ab8a9905d4afba60a409ccaa662b21f8cdb4")
-gemini_key = os.getenv("GEMINI_API_KEY", "AQ.Ab8RN6JuK7Cdis4ApjmlsPTZSywwIVj07FDbiubK7Gcc_LcNZQ")
+gemini_key = os.getenv("GEMINI_API_KEY", "AQ.Ab8RN6Iat_-5_lbaj0p2Lx0rDgUTAgJMuihyGUiSqAOtXDebQA")
 
 client = genai.Client(api_key=gemini_key)
 
