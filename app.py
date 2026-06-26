@@ -49,7 +49,7 @@ if user_question:
         try:
             prompt = f"Current AQI {aqi} hai {city} mein. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
             reply = client.chat.completions.create(
-                model="llama3-8b-8192",
+            model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}]
             )
             st.success(f"🤖 EcoBot: {reply.choices[0].message.content}")
