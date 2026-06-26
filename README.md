@@ -4,6 +4,7 @@ An AI-powered real-time Air Quality Index (AQI) monitoring web app for Indian ci
 
 ## 🚀 Live Demo
 Built with Python, Streamlit, and WAQI API.
+👉 [Click here to open EcoBot](https://ecobot-aqi-monitor-1.streamlit.app)
 
 ## 🔧 Features
 - Real-time AQI data for Indian cities (Jaipur, Delhi, Agra, Mumbai)
