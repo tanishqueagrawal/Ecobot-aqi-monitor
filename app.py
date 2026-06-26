@@ -156,20 +156,49 @@ with col_right:
 
 st.divider()
 
-# AI Chatbot
+# AI Chatbot with History
 st.subheader("🤖 EcoBot AI Assistant")
 st.write("AQI ke baare mein kuch bhi poochho!")
 
-user_question = st.text_input("Apna sawaal likho:")
+# Chat history initialize
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Purani history dikhao
+for msg in st.session_state.messages:
+    if msg["role"] == "user":
+        st.chat_message("user").write(msg["content"])
+    else:
+        st.chat_message("assistant").write(msg["content"])
+
+# New question
+user_question = st.chat_input("Apna sawaal likho...")
 
 if user_question:
+    # User message add karo
+    st.session_state.messages.append({"role": "user", "content": user_question})
+    st.chat_message("user").write(user_question)
+
     with st.spinner("EcoBot soch raha hai..."):
         try:
-            prompt = f"Current AQI {aqi} hai {city} mein. Temp: {temp}°C, Humidity: {humidity}%. Kal predicted AQI: {predictions[0]}. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
+            # Poori history bhejo Groq ko
+            chat_history = [
+                {"role": "system", "content": f"Tu EcoBot hai — ek helpful air quality assistant. Current AQI {aqi} hai {city} mein. Temp: {temp}°C, Humidity: {humidity}%. Kal predicted AQI: {predictions[0]}. Hindi mein jawab do."}
+            ] + st.session_state.messages
+
             reply = client.chat.completions.create(
                 model="llama-3.3-70b-versatile",
-                messages=[{"role": "user", "content": prompt}]
+                messages=chat_history
             )
-            st.success(f"🤖 EcoBot: {reply.choices[0].message.content}")
+            bot_reply = reply.choices[0].message.content
+            st.session_state.messages.append({"role": "assistant", "content": bot_reply})
+            st.chat_message("assistant").write(bot_reply)
+
         except Exception as e:
             st.error(f"Debug: {str(e)}")
+
+# History clear button
+if st.session_state.messages:
+    if st.button("🗑️ Chat clear karo"):
+        st.session_state.messages = []
+        st.rerun()
