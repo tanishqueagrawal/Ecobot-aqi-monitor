@@ -7,8 +7,8 @@ from groq import Groq
 st.title("🌿 EcoBot — Air Quality Monitor")
 st.write("Real-time AQI checker — Powered by WAQI API + AI")
 
-waqi_key = os.getenv("WAQI_API_KEY", "d222ab8a9905d4afba60a409ccaa662b21f8cdb4")
-groq_key = os.getenv("GROQ_API_KEY", "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")
+waqi_key = os.getenv("WAQI_API_KEY")
+groq_key = os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key=groq_key)
 
