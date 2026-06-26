@@ -9,7 +9,7 @@ st.write("Real-time AQI checker — Powered by WAQI API + Gemini AI")
 
 # API Keys
 waqi_key = os.getenv("WAQI_API_KEY")
-gemini_key = os.getenv("GEMINI_API_KEY")
+gemini_key = os.getenv("GEMINI_API_KEY", "AQ.Ab8RN6I7RXnpVsLk-BAHgyvkz1IvKIEw0c4DZmzdfBtkr26N_A")
 
 # Gemini setup
 genai.configure(api_key=gemini_key)
