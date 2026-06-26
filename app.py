@@ -46,9 +46,12 @@ user_question = st.text_input("Apna sawaal likho:")
 
 if user_question:
     with st.spinner("EcoBot soch raha hai..."):
-        prompt = f"Current AQI {aqi} hai {city} mein. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
-        reply = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=prompt
-        )
-        st.success(f"🤖 EcoBot: {reply.text}")
+        try:
+            prompt = f"Current AQI {aqi} hai {city} mein. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
+            reply = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+            )
+            st.success(f"🤖 EcoBot: {reply.text}")
+        except Exception as e:
+            st.error(f"Debug: {str(e)}")
