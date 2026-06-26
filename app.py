@@ -49,7 +49,7 @@ if user_question:
         try:
             prompt = f"Current AQI {aqi} hai {city} mein. User ka sawaal: {user_question}. Hindi mein short helpful jawab do."
             reply = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-1.5-flash-latest",,
                 contents=prompt
             )
             st.success(f"🤖 EcoBot: {reply.text}")
