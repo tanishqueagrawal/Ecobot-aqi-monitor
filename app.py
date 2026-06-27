@@ -43,7 +43,7 @@ st.caption(f"🕐 Last updated: {last_updated}")
 update_time = datetime.strptime(last_updated, "%Y-%m-%d %H:%M:%S")
 hours_old = (datetime.now() - update_time).total_seconds() / 3600
 if hours_old > 24:
-    st.warning(f"⚠️ Data {int(hours_old)} ghante purana hai — sensor offline ho sakta hai!")
+    st.warning(f"⚠️ AQI Data {int(hours_old)} ghante purana hai — sensor offline ho sakta hai!")
 
 if aqi <= 50:
     st.success("✅ Hawa saaf hai! Bahar jaana safe hai.")
